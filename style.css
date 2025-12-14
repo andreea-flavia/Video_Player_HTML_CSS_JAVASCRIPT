@@ -1,0 +1,329 @@
+body{
+    /* background: linear-gradient(110deg, #2a2f3b, #59747b, #7f8fa6, #b8a7c9); */
+    background: linear-gradient(135deg, #1A1C25, #3D4A5A, #59747B, #9FB3C1);
+}
+
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+
+h1, h2{
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: #e0e7e8;
+    letter-spacing: 0.6px;
+    margin-left: 20px;
+}
+
+#titlu_principal {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    margin: 50px auto;  
+    width: 300px;     
+    height: 60px;    
+    border: 3px solid #4B5563;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35),
+            inset 0 0 12px rgba(255,255,255,0.08);        
+}
+
+#titlu_principal h1 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center; 
+    margin: 0;
+    color: #e0e7e8; 
+}
+
+#player_video{
+    border-radius: 20px;
+    width: auto;
+    height: 800px;
+    margin: 50px;
+    border: 3px solid #4B5563;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35),
+            inset 0 0 12px rgba(255,255,255,0.08);
+    justify-content: center; 
+    align-items: center; 
+    display:flex;
+    flex-direction: column;
+}
+
+
+#canvas_player_video{
+    /* width: 1300px;      
+    height: 630px;  */
+    border-radius: 20px;
+    border: 3px solid #4B5563;
+    background-color: #4B5563;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35),
+            inset 0 0 12px rgba(255,255,255,0.08);
+    /* display:block; */
+
+    display: none;
+}
+
+#text_selectVideo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Satoshi, sans-serif;
+    font-size: 22px;
+    color: #E5D3E9;
+    background: rgba(0,0,0,0.4);
+    padding: 12px 20px;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+#notificare_urmVideo{
+    margin-top: 12px;
+    font-family: Satoshi, sans-serif;
+    font-size: 18px;
+    color: #c9a7cf;
+    opacity: 0.85;
+    transition: 0.3s;
+
+    display: none;
+}
+
+/* #elem_video{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;          
+    margin: 25px;
+
+    display: none;
+}
+
+#slider_timp{
+    display: block;
+    width: 60%;          
+    margin: 10px;   
+    cursor: pointer;
+    appearance: none;
+    height: 8px;
+    border-radius: 6px;
+    background:#c9a7cf;
+}
+
+#timer{
+    min-width: 80px;      
+    text-align: center;    
+    font-family: Satoshi, sans-serif;
+    font-size: 16px;
+    color: #E5D3E9; 
+}
+
+
+#buton_play, #buton_pause{
+    background:#b89fcc;
+    border:none;
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.2s;
+    color:#fff;
+}
+
+#buton_play:hover, #buton_pause:hover{
+    transform: scale(1.15);
+    filter: brightness(1.2);
+} */
+
+
+/* selectare obiect pt stergere */
+
+
+#galerie_all{
+    margin: 50px;
+    border: 3px solid #4B5563;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35),
+            inset 0 0 12px rgba(255,255,255,0.08);
+    justify-content: center; 
+}
+
+
+#galerie_all h2{
+    text-align: center; 
+}
+
+#elem_galerie{
+    margin:50px;
+}
+
+
+#galerie_video{
+    margin: 50px;
+    border: 3px solid #4B5563;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35),
+            inset 0 0 12px rgba(255,255,255,0.08);
+    display: grid;
+    grid-template-columns: repeat(5, 200px); 
+    gap: 40px;
+    justify-content: center; 
+    padding: 20px;
+    
+}
+
+
+
+#btn_adauga_video, #btn_sterge_video {
+    background: #778b99;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-family: Satoshi, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f2f6f7;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-right: 10px; 
+}
+
+#btn_adauga_video:hover, #btn_sterge_video:hover, .muta_poz:hover {
+    transform: scale(1.08);
+}
+
+.muta_poz{
+    background: #778b99;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: #f2f6f7;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+
+.galerie_obj{
+    width: 200px;
+    height: 200px;
+    object-fit:cover;
+    flex-shrink: 0;
+    border: 3px solid #2b3543;
+    border-radius: 10px;
+}
+
+.galerie_obj:hover{
+    border-color: #2b3543;            
+    transform: scale(1.07);           
+    transition: 0.3s ease;
+    box-shadow: 0 0 18px #2b3543;
+}
+
+
+
+.galerie_obj.v_selectat {
+  border: 4px solid #c9a7cf; 
+  box-shadow: 0 0 20px #c9a7cf;
+}
+
+
+/* efecte speciale */
+
+#efecte_speciale{
+    border: 3px solid #4B5563;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35),
+        inset 0 0 12px rgba(255,255,255,0.08);
+    /* display: flex; */
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-top:20px;
+}
+
+#btn_efecte_speciale{
+    margin:10px;
+    display: inline-flex;
+    /* align-items: center;
+    justify-content: center; */
+    background: #778b99;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 28px;
+    font-family: Satoshi, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#btn_efecte_speciale:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+.btn_efect {
+  background: #2b3543;
+  border: 2px solid #59747b;
+  border-radius: 14px;
+  padding: 10px 17px;
+  font-family: Satoshi, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9FB3C1;
+  cursor: pointer;
+  margin: 5px;
+  transition: 0.25s;
+
+  display: none;
+}
+
+.btn_efect:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+
+#btn_sterge_efecte{
+    background-color: #778b99;
+    color: white;
+}
+
+
+.slider_efect {
+    font-family: Satoshi, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #9FB3C1;
+    margin: 5px;
+    transition: 0.25s;
+
+    display: none;
+}
+
+
+/* subtitrati */
+#subtitrari{
+    position: absolute; 
+    bottom: 55px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: fit-content; 
+    max-width: 80%; 
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.4;
+    border-radius: 5px;
+    z-index: 10; 
+    display: none; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+}

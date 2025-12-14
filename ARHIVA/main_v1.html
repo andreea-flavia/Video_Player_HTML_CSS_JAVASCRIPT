@@ -1,0 +1,78 @@
+<!-- E	1096	TĂNĂSESCU ANDREEA FLAVIA	TEMA 2 - Player video  -->
+
+<!-- Descriere: Permite utilizatorului să vizioneze o colecție de minim 4 filme (stocate static în cadrul aplicației în folderul 
+media). 
+0.5p posibilitate navigare prin playlist; trecere automată la filmul următor  
+1p adăugarea de noi filme prin drag and drop sau prin intermediul unui control de tip input 
+1p modificare ordine filme în playlist; ștergere filme din playlist 
+1p aplicare de efecte video selectabile de către utilizator cu ajutorul unui element de tip canvas (notă: efectele vor fi 
+diferite de cele implementate pe parcursul seminarelor; efectele nu vor fi implementate cu ajutorul CSS) 
+2p desenare video și controale semitransparente (previous, play / pause, next, progress bar și volum) pe același 
+element canvas (suprapuse peste fluxul video) și determinarea operației pe baza poziției cursorului în cadrul canvas
+ului 
+2p implementare funcționalitate de preview cadru (atunci când cursorul este deasupra progress bar-ului) 
+1p afișare subtitrări (stocate sub formă de fișiere JSON în cadrul aplicației)           
+0.5p stocare setări (ex: nivel volum, poziție curentă în cadrul playlist-ului) cu ajutorul Web Storage API  
+Notă: O colecție de fișiere video gratuite este disponibilă la adresa  https://www.pond5.com  -->
+
+<!-- https://cloudinary.com/blog/build-a-custom-html5-video-player-with-javascript#:~:text=In%20this%20post%2C%20you%E2%80%99ll%20learn%20how%20to%20embed,open%20it%20and%20play%20around%20on%20your%20own. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+
+    <body> 
+        <header>
+            <h1>Site Video Player</h1>
+            <p>Bine ai venit! - header</p>
+        </header>  
+        
+<main>
+    <div class="carusel_video">
+        <div class="slide_video">
+            <video controls>
+                <source src="Media/P1_brown_cat_candle.mp4" type="video/mp4">
+                Videoclip Invalid.
+            </video>
+        </div>
+        <div class="slide_video">
+            <video  controls>
+                <source src="Media/P2_kitten_pumpkin.mp4" type="video/mp4">
+                Videoclip Invalid.
+            </video>
+        </div>
+        <div class="slide_video">
+            <video  controls>
+                <source src="Media/P3_silly_orange.mp4" type="video/mp4">
+                Videoclip Invalid.
+            </video>
+        </div>
+        <div class="slide_video">
+            <video  controls>
+                <source src="Media/P4_sleeping_white.mp4" type="video/mp4">
+                Videoclip Invalid.
+            </video>
+        </div>
+        <div class="slide_video">
+            <video  controls>
+                <source src="Media/P5_white_cat_piano.mp4" type="video/mp4">
+                Videoclip Invalid.
+            </video>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+</main>
+
+        <footer>
+        <p>Footer</p>
+        </footer>
+
+         <script src="code.js"></script>
+    </body>
+</html>

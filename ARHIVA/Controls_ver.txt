@@ -1,0 +1,253 @@
+
+
+//////////////CONTROALE - inainte de change - 13/12/2025
+
+let hoverBtn = null;
+let hoverCanvas = false;
+
+let controale = {
+  play:   { x: 20,  y: 20,  w: 60, h: 40 },
+  pause:  { x: 90,  y: 20,  w: 60, h: 40 },
+  bar:    { x: 20, y:  canvas_video.height - 30, w: canvas_video.width - 40, h: 10 }
+}
+
+function drawControale(ctx) {
+  if (!hoverCanvas) return;
+
+  let W = canvas_video.width;
+  let H = canvas_video.height;
+
+  const btnW = 35;
+  const btnH = 35;
+  const y = H - 60;
+  const centruH = H/2 - btnH/2;
+
+  //play
+  if (!videoCanvas.paused) {
+    ctx.fillStyle = `rgba(222, 152, 227,0.5)`; 
+  }
+  if (videoCanvas.paused) {
+    ctx.fillStyle = `rgba(0,0,0,0.4)`;   
+  }
+  ctx.fillRect(20, y, btnW, btnH);
+  ctx.fillStyle = "white";
+  ctx.font = "22px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("▶", 20 + btnW/2, y + btnH/2);
+
+  //pause
+  if (videoCanvas.paused) {
+    ctx.fillStyle = `rgba(222, 152, 227,0.5)`; 
+  }
+  if (!videoCanvas.paused) {
+    ctx.fillStyle = `rgba(0,0,0,0.4)`;   
+  }
+  ctx.fillRect(70, y, btnW, btnH);
+  ctx.fillStyle = "white";
+  ctx.font = "22px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("❚❚", 70 + btnW/2, y + btnH/2);
+
+  //bara timp
+  let barX = 120;
+  let barY = H - 35;
+  let barW = W - 140;
+  let barH = 8;
+  ctx.fillStyle = "rgba(255,255,255,0.3)";
+  ctx.fillRect(barX, barY, barW, barH);
+
+  let p = videoCanvas.currentTime / videoCanvas.duration || 0;
+  ctx.fillStyle = "rgba(222, 152, 227, 0.7)";
+  ctx.fillRect(barX, barY, barW * p, barH);
+
+  
+  //previous
+  ctx.fillStyle = "rgba(0,0,0,0.4)";
+  ctx.fillRect(10, centruH, btnW, btnH);
+  ctx.fillStyle = "white";
+  ctx.font = "20px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("◀", 10 + btnW/2, centruH + btnH/2);
+
+  //next
+  ctx.fillStyle = "rgba(0,0,0,0.4)";
+  ctx.fillRect(W - 45, centruH, btnW, btnH);
+  ctx.fillStyle = "white";
+  ctx.font = "20px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("▶", W - 45 + btnW/2, centruH + btnH/2);
+}
+
+canvas_video.addEventListener("mouseenter", () => hoverCanvas = true);
+canvas_video.addEventListener("mouseleave", () => hoverCanvas = false);
+
+
+
+canvas_video.addEventListener("click", (e) => {
+  const r = canvas_video.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  const H = canvas_video.height;
+  const W = canvas_video.width;
+
+  console.log("Click la: ", x, y);
+
+  const btnW = 35;
+  const btnH = 35;
+  const centruH = H/2 - btnH/2;
+
+
+  //play
+  if (x > 20 && x < 20 + btnW && y > centruH && y < centruH + btnH) {
+    videoCanvas.play();
+    return;
+  }
+
+  //pause
+  if (x > 70 && x < 70 + btnW && y > centruH && y < centruH + btnH) {
+    videoCanvas.pause();
+    return;
+  }
+
+
+  //bara timp
+  const barX = 120;
+  const barY = canvas_video.height - 35;
+  const barW = canvas_video.width - 140;
+  const barH = 8;
+
+  if (x > barX && x < barX + barW && y > barY && y < barY + barH) {
+    let pct = (x - barX) / barW;
+    videoCanvas.currentTime = videoCanvas.duration * pct;
+  }
+
+    //toggle play/pause pe tot canvasul // inafara de bara de timp
+  if (!videoCanvas.paused && y < (canvas_video.height - 60)) {
+    videoCanvas.pause();
+  } else {
+    videoCanvas.play();
+  }
+
+
+//prev
+let px = 20;
+let py = H/2 - btnH/2;
+let pw = btnW;
+let ph = btnH;
+
+if (x > px && x < px + pw && y > py && y < py + ph) {
+  index_video_curent--;
+  if (index_video_curent < 0) index_video_curent = playlist.length - 1;
+  playVideo(index_video_curent);
+  return;
+}
+
+
+  // //next
+
+  let nx = W - btnW;
+  let ny = H/2 - btnH/2;
+  let nw = btnW;
+  let nh = btnH;
+
+  if (x > nx && x < nx + nw && y > ny && y < ny + nh) {
+    index_video_curent++;
+    if (index_video_curent > playlist.length - 1) index_video_curent = 0;
+    playVideo(index_video_curent);
+    return;
+  }
+
+  // console.log("Playlist Length: ", playlist.length);
+
+});
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// SUBTITRARI
+
+//citire json
+async function citireJSON(title){
+  const cale = `subtitrari/${title}.json`
+  try{
+    const rasp = await fetch(cale);
+    if(!rasp.ok){
+      // console.log("Nu s-au gasit subtitrari pentru ", title);
+      return [];
+    }
+
+    const data = await response.json();
+    return data;
+  } catch(error){
+    console.log("Eroare la incarcare subtitrari pt ", title);
+    return [];
+  }
+}
+
+//////////////////////////////////////////////////
+
+let subtitrari = [];
+let subtitrari_test = [
+  { start: 0.5, end: 4.0, text: "Acestea sunt niste subtitrati test test test test" }
+]
+
+// let mapare_sub = {
+//   'V6': [
+//     { start: 0.5, end: 4.0, text: "Acestea sunt niste subtitrati test test test test" },
+//     { start: 5.5, end: 8.5, text: "Sincronizarea este perfecta." },
+//   ]
+// }
+
+const subtitrari_container = document.getElementById("subtitrari");
+
+function addSubtitrari(){
+  if (index_video_curent < 0 || index_video_curent >= playlist.length) {
+    return; 
+  }
+  
+  const currentTitle = playlist[index_video_curent].title;
+  mapare_sub = {};
+  const sub_activa = mapare_sub[currentTitle] || [];
+  const currentTime = videoCanvas.currentTime;
+
+
+  if (sub_activa.length === 0 ) {
+    if (subtitrari_container) {
+      subtitrari_container.style.display = "none";
+      subtitrari_container.textContent = "";
+    }
+    return;
+  }
+
+  let subtitrare_gasita = null;
+
+  for (const sub of sub_activa){
+    if (currentTime >= sub.start && currentTime < sub.end) {
+      subtitrare_gasita = sub;
+      break; 
+    }
+  }
+
+  if (subtitrari_container) {
+    if (subtitrare_gasita) {
+      if (subtitrari_container.textContent !== subtitrare_gasita.text) {
+        subtitrari_container.textContent = subtitrare_gasita.text;
+        subtitrari_container.style.display = "block";
+      }
+    } else {
+      subtitrari_container.style.display = "none";
+      subtitrari_container.textContent = ""; 
+    }
+  }
+}

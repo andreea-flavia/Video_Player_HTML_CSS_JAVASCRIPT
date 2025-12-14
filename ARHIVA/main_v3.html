@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Video</title>
+    <link rel="stylesheet" href="style_v3.css">
+</head>
+<body>
+
+
+    <div id="meniuPrincipal" class="sidenav">
+    <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+    <button class="closebtn" onclick="closeNav()">&times;</button>
+    <button id="meniu_btnAllVideos">Toate Videoclipurile</button>
+    <button id="meniu_btnSetari">Setari</button>
+    <!-- <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a> -->
+    </div>
+
+    <button id="menu_btnOpen" onclick="openNav()">&#9776;</button>
+
+    <div class="main" id="main">
+        <h1>Bun venit!</h1>
+        <section>
+        <h2 class="title"></h2>
+        <div class="container">
+            <div id="video_player">
+                <video controls id="main-Video" src=""></video>
+            </div>
+            <div class="playlistBx">
+                <div class="header">
+                    <div class="row">
+                        <span class="AllLessons"></span>
+                    </div>
+                </div>
+                <ul class="playlist" id="playlist">
+                </ul>
+            </div>
+        </div>
+    </section>
+    </div>
+    
+    <!-- <video id = "v1" class='media'  muted > <source src="Media/P1_brown_cat_candle.mp4" type="video/mp4"> Videoclip Invalid. </video> 
+    <video id = "v2" class='media'   muted > <source src="Media/P2_kitten_pumpkin.mp4" type="video/mp4"> Videoclip Invalid.  </video> 
+    <video id = "v3" class='media'   muted > <source src="Media/P3_silly_orange.mp4" type="video/mp4">  Videoclip Invalid. </video> 
+    <video id = "v4" class='media'   muted > <source src="Media/P4_sleeping_white.mp4" type="video/mp4">  Videoclip Invalid. </video>  
+    <video id = "v5" class='media'   muted > <source src="Media/P5_white_cat_piano.mp4" type="video/mp4"> Videoclip Invalid. </video>  -->
+
+    <script src="code_v3.js"></script>
+</body>
+</html>
