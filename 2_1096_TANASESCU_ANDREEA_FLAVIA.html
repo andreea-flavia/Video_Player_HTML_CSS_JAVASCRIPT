@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Video</title>
+    <link rel="stylesheet" href="2_1096_TANASESCU_Flavia.css">
+</head>
+<body>
+    
+    <!-- <video id = "v1" class='media'  muted > <source src="Media/P1_brown_cat_candle.mp4" type="video/mp4"> Videoclip Invalid. </video> 
+    <video id = "v2" class='media'   muted > <source src="Media/P2_kitten_pumpkin.mp4" type="video/mp4"> Videoclip Invalid.  </video> 
+    <video id = "v3" class='media'   muted > <source src="Media/P3_silly_orange.mp4" type="video/mp4">  Videoclip Invalid. </video> 
+    <video id = "v4" class='media'   muted > <source src="Media/P4_sleeping_white.mp4" type="video/mp4">  Videoclip Invalid. </video>  
+    <video id = "v5" class='media'   muted > <source src="Media/P5_white_cat_piano.mp4" type="video/mp4"> Videoclip Invalid. </video> -->
+    <div id = "titlu_principal">
+        <h1>Player Video</h1>
+    </div>
+
+    <div  id="player_video">
+        <canvas id="canvas_player_video"></canvas>
+        <div id="subtitrari">Subtitrari</div>
+        <div id="text_selectVideo">Selectează un videoclip din galerie pentru a incepe!</div>
+        <div id="notificare_urmVideo">Urmeaza urmatorul videoclip...</div>
+        <!-- <div id="elem_video" >
+            <span id="timer">00:00 / 00:00</span>
+            <input type="range" id="slider_timp" min="0" max="100" value="0">
+            <button id="buton_pause">⏸</button>
+            <button id="buton_play">▶</button>
+        </div> -->
+
+        <div id="efecte_speciale">
+            <button id="btn_efecte_speciale">Efecte speciale</button>
+
+            <button class="btn_efect" id="efect_gri">GRI</button>
+            <button class="btn_efect" id="efect_invert">INVERT</button>
+            <button class="btn_efect" id="efect_blue">ALBASTRU</button>
+            <button class="btn_efect" id="efect_sepia">SEPIA</button>
+
+            <label class="slider_efect" >Luminozitate</label>
+            <input class="slider_efect" type="range" id="slider_luminozitate" min="-100" max="100" value="0" >
+            <label class="slider_efect">Contrast</label>
+            <input class="slider_efect" type="range" id="slider_contrast" min="-100" max="100" value="0" >
+           
+
+            <button class="btn_efect" id="btn_sterge_efecte">Sterge efectele</button>
+        </div>
+
+
+    </div>
+
+    <div id="galerie_all">
+        <h2>Galerie Video</h2>
+        <div id="elem_galerie">
+            <button id="btn_adauga_video">Adauga un videoclip</button>
+            <input type="file" id="input_adauga_video" accept="video/*" style="display:none">
+            <button id="btn_sterge_video">Sterge</button>
+            <button class="muta_poz" title="Muta videclipul cu o pozitie la stanga" id="muta_stg">◀</button>
+            <button class="muta_poz" title="Muta videclipul cu o pozitie la dreapta" id="muta_dr">▶</button>
+        </div>
+        <div id="galerie_video">
+
+        </div>
+    </div>
+
+
+    <script src="2_1096_TANASESCU_Flavia.js"></script>
+</body>
+</html>
+
+
